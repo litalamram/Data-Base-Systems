@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block css%}
+<link href="{{ url_for('static',filename='css/jquery.auto-complete.css')}}" rel="stylesheet">
+{%endblock%}
+{%block content%}
+<section class="bg-dark text-white" id="search">
+   <div class="container">
+   <h2>{%block title%}{%endblock%}</h2>
+   <form id="form">
+      {%block form%}{%endblock%}
+      <button type="submit" class="btn btn-primary">Search</button>
+   </form>
+   <div class="container"  id="res"></div>
+</section>
+{%endblock%}
+{%block js%}
+<script src="{{ url_for('static',filename='js/jquery.auto-complete.min.js')}}"></script>
+<script>
+   // this is the id of the form
+   $("#form").submit(function(e) {
+   document.getElementById("res").innerHTML = "Loading...";
+   
+   var form = $(this);
+   var url = form.attr('action');
+   
+   $.ajax({
+        type: "GET",
+        url: "search",
+        data: form.serialize(), // serializes the form's elements.
+        success: function(data)
+        {
+            
+            document.getElementById("res").innerHTML = data;
+        }
+      });
+   
+   e.preventDefault(); // avoid to execute the actual submit of the form.
+   });  
+   
+   $('input[name="cuisineName"]').autoComplete({
+                minChars: 1,
+                source: function(term, suggest){
+                    term = term.toLowerCase();
+                    var choices = ['American','Asian','Barbecue','Brazilian','Cajun & Creole','Chinese','Cuban','English','Filipino','French','German','Greek','Hawaiian','Hungarian','Indian','Irish','Italian','Jamaican','Japanese','Kid-Friendly','Korean','Mediterranean','Mexican','Moroccan','Portuguese','Russian','Southern & Soul Food','Southwestern','Spanish','Swedish','Thai','Turkish','Vietnamese'];
+                    var suggestions = [];
+                    for (i=0;i<choices.length;i++)
+                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                    suggest(suggestions);
+                }
+            });
+   $('input[name="holidayName"]').autoComplete({
+                minChars: 1,
+                source: function(term, suggest){
+                    term = term.toLowerCase();
+                    var choices = ['4th of July','Christmas','Easter','Fall','Game Day','Halloween','Hanukkah','New Year','Passover','Spring','St. Patrick\'s Day','Summer','Sunday Lunch','Thanksgiving','Valentine\'s Day','Winter'];
+                    var suggestions = [];
+                    for (i=0;i<choices.length;i++)
+                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                    suggest(suggestions);
+                }
+            });
+   
+   $('input[name="HolidayMealName"]').autoComplete({
+                minChars: 1,
+                source: function(term, suggest){
+                    term = term.toLowerCase();
+                    var choices = ['4th of July','Christmas','Easter','Fall','Game Day','Halloween','Hanukkah','New Year','Passover','Spring','St. Patrick\'s Day','Summer','Sunday Lunch','Thanksgiving','Valentine\'s Day','Winter'];
+                    var suggestions = [];
+                    for (i=0;i<choices.length;i++)
+                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                    suggest(suggestions);
+                }
+            });
+
+     jQuery(function ($) {
+    var $inputs = $('input[name=cuisineName],input[name=holidayName]');
+    $inputs.on('input', function () {
+        // Set the required property of the other input to false if this input is not empty.
+        $inputs.not(this).prop('required', !$(this).val().length);
+    });
+});
+
+jQuery(function ($) {
+    var $inputs = $('input[name=ingredientName],input[name=recipeName]');
+    $inputs.on('input', function () {
+        // Set the required property of the other input to false if this input is not empty.
+        $inputs.not(this).prop('required', !$(this).val().length);
+    });
+});
+
+
+   
+   
+</script>
+{%endblock%}

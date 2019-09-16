@@ -1,0 +1,25 @@
+{% extends 'base_form.html' %}
+{%block title%}Search recipies associated with cuisines and holidays:{%endblock%}
+{%block form%}
+<input class="form-check-input position-static col-sm-1" type="radio" name="radio" id="cuisineHolidayRadio" value="cuisineHolidayRadio" checked style="display:none">
+<div class="form-group row" style="display:none">
+   <label for="recipeName" class="col-sm-2 col-form-label">Recipe Name</label>
+   <div class="col-sm-10">
+      <input type="text" class="form-control" name="recipeName" id="recipeName" placeholder="Recipe Name...">
+   </div>
+</div>
+<div class="form-group row">
+   <label for="cuisineName" class="col-sm-2 col-form-label" id="cuisineLbl">Cuisine</label>
+   <div class="col-sm-2">
+      <input type="text" class="form-control" name="cuisineName" id="cuisineName" placeholder="Cuisine..." required>
+   </div>
+   <label for="holidayName" class="col-sm-2 col-form-label" id="holidayLbl">Holiday</label>
+   <div class="col-sm-2">
+      <input type="text" class="form-control" name="holidayName" id="holidayName" placeholder="Holiday..." required>
+   </div>
+   <div class="form-check form-check-inline" id="caloriesLbl">
+      <input class="form-check-input" type="checkbox" name="minCalories" id="minCalories" value="minCalories">
+      <label class="form-check-label" for="minCalories" id="caloriesLbl">Minimum calories</label>
+   </div>
+</div>
+{%endblock%}

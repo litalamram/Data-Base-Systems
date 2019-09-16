@@ -1,0 +1,21 @@
+{% extends 'base_form.html' %}
+{%block title%}Search recipies including an ingredient:{%endblock%}
+{%block form%}
+<input class="form-check-input position-static col-sm-1" type="radio" name="radio" id="ingRadio" value="ingRadio" checked style="display:none">
+<div class="form-group row">
+   <label for="recipeName" class="col-sm-2 col-form-label">Recipe Name</label>
+   <div class="col-sm-10">
+      <input type="text" class="form-control" name="recipeName" id="recipeName" placeholder="i.e cake, salad, spaghetti, pizza" required>
+   </div>
+</div>
+<div class="form-group row">
+   <label for="ingredientName" class="col-sm-2 col-form-label" id="ingLbl">Ingredient Name</label>
+   <div class="col-sm-4">
+      <input type="text" class="form-control" name="ingredientName" id="ingredientName" placeholder="i.e apple, tomato, oil, lemons" required>
+   </div>
+   <label for="ingredientsNumber" class="col-sm-3 col-form-label" id="maxNumIngsLbl">Max Number Of Ingredients</label>
+   <div class="col-sm-1">
+      <input type="number" class="form-control" name="maxNumIngs" id="muxNumIngs" placeholder="">
+   </div>
+</div>
+{%endblock%}

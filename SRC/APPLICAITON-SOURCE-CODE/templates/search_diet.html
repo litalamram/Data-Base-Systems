@@ -1,0 +1,39 @@
+{% extends 'base_form.html' %}
+{%block title%}Search recipies matching your diets:{%endblock%}
+{%block form%}
+<div class="form-group row">
+   <label for="recipeName" class="col-sm-2 col-form-label">Recipe Name</label>
+   <div class="col-sm-10">
+      <input type="text" class="form-control" name="recipeName" id="recipeName" placeholder="i.e cake, salad, spaghetti, pizza" required>
+   </div>
+</div>
+<fieldset class="form-group">
+   <div class="row">
+   <input class="form-check-input position-static col-sm-1" type="radio" name="radio" id="dietsRadio" value="dietsRadio" checked style="display:none">
+   <legend class="col-form-label col-sm-1 pt-0" id="dietsLbl">Diets</legend>
+   <div class="col-sm-10">
+      <div class="form-check">
+         <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="diet[]" id="vegan" value="vegan">
+            <label class="form-check-label" for="vegan">Vegan</label>
+         </div>
+         <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="diet[]" id="vegetarian" value="vegetarian">
+            <label class="form-check-label" for="vegetarian">Vegetarian</label>
+         </div>
+         <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="diet[]" id="peanut_free" value="peanut_free">
+            <label class="form-check-label" for="peanut_free">Peanut Free</label>
+         </div>
+         <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="diet[]" id="tree_nut_free" value="tree_nut_free">
+            <label class="form-check-label" for="tree_nut_free">Tree Nut Free</label>
+         </div>
+         <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="diet[]" id="alcohol_free" value="alcohol_free">
+            <label class="form-check-label" for="alcohol_free">Alcohol Free</label>
+         </div>
+      </div>
+   </div>
+</fieldset>
+{%endblock%}
